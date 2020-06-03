@@ -1,0 +1,38 @@
+class Node:
+    def __init__(self,data=None):
+        self.data=data
+        self.left=None
+        self.right=None
+def printdata(root):
+    if(root==None):
+        return
+    printdata(root.left)
+    print(root.data,end=" ")
+    printdata(root.right)
+n=int(input())
+root=Node()
+d=dict()
+l=[str(x) for x in input().split()]
+for i in range(0,n*3,3):
+    j=i+3
+    s=l[i:j]
+    print(s)
+    parent=s[0]
+    child=s[1]
+    pos=s[2]
+    if(i==0):
+        root=Node(parent)
+        d[parent]=root
+    parentnode=d[parent]
+    childnode=Node(child)
+    if(pos=="L"):
+        parentnode.left=childnode
+    elif(pos=="R"):
+        parentnode.right=childnode
+    d[child]=childnode
+printdata(root)
+'''
+N=4
+10 20 L 10 30 R 20 40 L 20 60 R
+N=4
+R A L R D R A A L A R R
