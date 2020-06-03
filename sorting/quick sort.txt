@@ -1,0 +1,16 @@
+def quicksort(a,l,r):
+    if(r-l<=1):
+        return()
+    yellow=l+1
+    #move green pointer to right position
+    for green in range(l+1,r):
+        if(a[green]<=a[l]):
+            (a[green],a[l])=(a[l],a[green])
+            yellow+=1
+    #move pivot in place
+    (a[l],a[yellow-1])=(a[yellow-1],a[l])
+    #to sort after partitioning
+    quicksort(a,0,yellow-1)
+    quicksort(a,yellow,r)
+a=[int(x) for x in input().split()]
+print(quicksort(l,0,len(a)))
