@@ -1,0 +1,49 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Linkedlist:
+    def __init__(self):
+        self.head=None
+    def append(self,data):
+        new=Node(data)
+        temp=self.head
+        if(self.head==None):
+            self.head=new
+        else:
+            while(temp.next!=None):
+                temp=temp.next
+            temp.next=new
+    def insert(self,data):
+        temp=self.head
+        new=Node(data)
+        if(self.head==None): #if we dont have any nodes in linked list
+            self.head=new  #we make the new node as head node
+        elif(self.head.data>=new.data): #if we need to insert at the beginning of linked list
+            new.next=self.head  #we store the address of head in new nodes next
+            self.head=new   #we make the head node as new node
+
+        else:
+            while(temp.next!=None and temp.data<new.data):# to traverse till node where we have to insert
+                prev=temp  #prev points to node before the node we have to insert
+                temp=temp.next  # to go till the node we make temp=temp.next
+            new.next=prev.next  #now we copy the address of prev node to next field of new node
+            prev.next=new    #now we store the address of new node in prev node
+
+    def printlist(self):
+        temp=self.head
+        while(temp):
+            print(temp.data,end=" ")
+            temp=temp.next
+a=[int(x) for x in input().split()]
+val=int(input())
+l1=Linkedlist()
+for i in a:
+    l1.append(i)
+l1.insert(val)
+l1.printlist()
+
+
+
+
+

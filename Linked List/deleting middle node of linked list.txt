@@ -1,0 +1,42 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Linkedlist:
+    def __init__(self):
+        self.head=None
+    def append(self,data):
+        new=Node(data)
+        temp=self.head
+        if(self.head==None):
+            self.head=new
+        else:
+            while(temp.next!=None):
+                temp=temp.next
+            temp.next=new
+    def deletemiddle(self,l):
+        first=self.head
+        second=self.head
+        prev=None
+        if(self.head!=None):
+          while(second!=None and second.next!=None):
+              second=second.next.next
+              prev=first
+              first=first.next
+          prev.next=first.next
+    def printlist(self):
+        temp=self.head
+        while(temp):
+            print(temp.data,end=" ")
+            temp=temp.next
+a=[int(x) for x in input().split()]
+l1=Linkedlist()
+for i in a:
+    l1.append(i)
+l1.deletemiddle(l1)
+l1.printlist()
+
+
+
+
+

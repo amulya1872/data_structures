@@ -1,0 +1,49 @@
+class Node:
+    def __init__(self,data): #creates node with given data
+        self.data=data
+        self.next=None
+class Linkedlist:
+    def __init__(self):
+        self.head=None
+    def append(self,data):
+        new=Node(data)   #node with data given is created
+        temp=self.head
+        if(self.head==None):  #if it is the first node then we make head as first node
+            self.head=new
+        else:
+            while(temp.next!=None):  #nodes next value is not none
+               temp=temp.next        #we go to the next node it traverses till it finds none
+            temp.next=new #if it is none it means it is last node and we make its next as newnodes address
+    def delete(self,data):
+        temp=self.head
+        #to delete first node in a linked list i.e,if it is head
+        if(temp is not None):
+            if(temp.data==data): #if heads data is matched with given data
+                self.head=temp.next  #we make head point to the node which is adjacent to head
+                temp=None
+                return
+            #else we traverse through all nodes
+        while(temp is not None):
+            if(temp.data==data):#if data is found then we go out of the loop
+                break
+            prev=temp  #prev is node before the node we want to delete
+            temp=temp.next  #now temp points to next node
+        if(temp==None):   #if node is not found
+            return
+        prev.next=temp.next   #in the previous node we store the add of adjacent node which we deleted
+    def printlist(self):
+        temp=self.head
+        while(temp):
+            print(temp.data,end=" ")
+            temp=temp.next
+
+
+l1=Linkedlist()
+l=[int(x) for x in input().split()]
+for i in l:
+    l1.append(i)
+l1.printlist()
+l1.delete(5)
+print()
+l1.printlist()
+

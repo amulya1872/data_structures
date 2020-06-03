@@ -1,0 +1,45 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Linkedlist:
+    def __init__(self):
+        self.head=None
+    def append(self,data):
+        new=Node(data)
+        temp=self.head
+        if(self.head==None):
+            self.head=new
+        else:
+            while(temp.next!=None):
+                temp=temp.next
+            temp.next=new
+    def duplicateval(self):
+        temp=self.head
+        if(temp==None):# if there are no nodes then we return nothing
+            return
+        else:
+            while(temp.next!=None):#to traverses till end node
+                if(temp.data==temp.next.data):#if current node data and next nodes data is same
+                    new=temp.next.next  #we make new to point the node next to next node
+                    temp.next=None
+                    temp.next=new   #we store the address of new node in our node
+                else:
+                    temp=temp.next   #if values are not same we increment temp
+        return self.head
+    def printlist(self):
+        temp=self.head
+        while(temp):
+            print(temp.data,end=" ")
+            temp=temp.next
+a=[int(x) for x in input().split()]
+l1=Linkedlist()
+for i in a:
+    l1.append(i)
+l1.duplicateval()
+l1.printlist()
+
+
+
+
+
