@@ -1,0 +1,40 @@
+import sys
+class Graph:
+    def __init__(self,vertices):
+        self.v=vertices
+        self.graph=[[0 for i in range(vertices)]
+                        for j in range(vertices)]
+    def min_dist(self,dist,sp):
+        min=sys.maxsize
+        min_index=0
+        for i in range(self.v):
+            if(dist[i]<min and sp[i]==False):
+                min=dist[i]
+                min_index=i
+        return(min_index)
+    def dijkistra(self,src):
+        dist=[sys.maxsize]*(self.v)
+        dist[src]=0
+        sp=[False]*(self.v)
+        for i in range(self.v):
+            u=self.min_dist(dist,sp)
+            sp[u]=True
+            for v in range(self.v):
+                if(self.graph[u][v]>0 and sp[v]==False and dist[v]>dist[u]+self.graph[u][v]):
+                    dist[v]=dist[u]+self.graph[u][v]
+        for i in range(1,len(dist)):
+            print(i,dist[i],end=" ")
+            print()
+n=int(input())
+g=Graph(n)
+l=[int(x) for x in input().split()]
+k=[]
+for i in range(0,len(l),n):
+   k.append(l[i:i+n])
+g.graph=k
+g.dijkistra(0)
+
+
+
+
+

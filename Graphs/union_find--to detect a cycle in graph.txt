@@ -1,0 +1,56 @@
+from collections import defaultdict
+class Graph:
+    def __init__(self,v):
+        self.v=v
+        self.graph=defaultdict(list)
+    def addEdge(self,u,v):
+        self.graph[u].append(v)
+    def find_parent(self,parent,i):
+        if(parent[i]==-1):
+            return i
+        if(parent[i]!=-1):
+            return self.find_parent(parent,parent[i])
+    def union(self,parent,x,y):
+        x_p=self.find_parent(parent,x)
+        y_p=self.find_parent(parent,y)
+        parent[x_p]=y_p
+    def cyclic(self):
+        parent=[-1]*self.v
+        for i in self.graph:
+            for j in self.graph[i]:
+                x=self.find_parent(parent,i)
+                y=self.find_parent(parent,j)
+                if(x==y):
+                    return True
+                self.union(parent,x,y)
+g = Graph(4)
+g.addEdge(0,1)
+g.addEdge(1,2)
+g.addEdge(2,3)
+if(g.cyclic()):
+    print("Cyclic")
+else:
+    print("Not cyclic")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
