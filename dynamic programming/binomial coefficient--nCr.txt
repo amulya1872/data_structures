@@ -1,0 +1,10 @@
+def comb(n,r):
+    if(r==0 or r==n):
+        return(1)
+    elif(r==1):
+        return(n)
+    else:
+        if(r>n//2):
+            r=n-r
+        return(comb(n-1,r)+comb(n-1,r-1))
+print(comb(8,5))

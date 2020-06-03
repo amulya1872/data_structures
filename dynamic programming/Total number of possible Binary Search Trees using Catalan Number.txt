@@ -1,0 +1,12 @@
+def binomial_coefficient(n,k):
+    if(k>n-k):
+        k=n-k
+    res=1
+    for i in range(k):
+        res=res*(n-i)
+        res=res//(i+1)
+    return res
+n=int(input())
+c=binomial_coefficient(2*n,n)
+k=c//(n+1)
+print(k,end=" ")
