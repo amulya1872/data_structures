@@ -1,0 +1,78 @@
+class Node:
+    def __init__(self,data=None):
+        self.data=data
+        self.left=None
+        self.right=None
+class Tree:
+    def __init__(self):
+        self.root=None
+    def insert(self,data):
+        if(self.root==None):
+            self.root=Node(data)
+        else:
+            temp=self.root
+            q=[]
+            q.append(temp)
+            while(len(q)!=0):
+                cur=q.pop(0)
+                if(cur.left==None):
+                    cur.left=Node(data)
+                    break
+                else:
+                    q.append(cur.left)
+                if (cur.right==None):
+                    cur.right = Node(data)
+                    break
+                else:
+                    q.append(cur.right)
+
+    def inorder(self,root):
+        if(root==None):
+            return
+        self.inorder(root.left)
+        print(root.data,end=" ")
+        self.inorder(root.right)
+
+    def preorder(self,root):
+        if(root==None):
+            return
+        print(root.data,end=" ")
+        self.preorder(root.left)
+        self.preorder(root.right)
+    def postorder(self,root):
+        if(root==None):
+            return
+        self.postorder(root.left)
+        self.postorder(root.right)
+        print(root.data,end=" ")
+    def levelorder(self,root):
+        q=[]
+        if(root==None):
+            return
+        q.append(root)
+        while(len(q)!=0):
+            node=q.pop(0)
+            print(node.data,end=" ")
+            if(node.left!=None):
+                q.append(node.left)
+            if(node.right!=None):
+                q.append(node.right)
+
+
+l=[int(x) for x in input().split()]
+t=Tree()
+for i in l:
+    t.insert(i)
+root=t.root
+t.inorder(root)
+print()
+t.preorder(root)
+print()
+t.postorder(root)
+print()
+t.levelorder(root)
+
+
+
+
+

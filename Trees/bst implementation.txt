@@ -1,0 +1,51 @@
+class Node:
+    def __init__(self,data):
+        self.left=None
+        self.right=None
+        self.data=data
+class Tree:
+    def __init__(self):
+        self.root=None
+    def insert(self,data):
+        if(self.root==None):
+            self.root=Node(data)
+        else:
+            cur=self.root
+            while True:
+                if(data<cur.data):
+                    if(cur.left==None):
+                        cur.left=Node(data)
+                        break
+                    else:
+                        cur=cur.left
+                elif(data>cur.data):
+                    if(cur.right==None):
+                        cur.right=Node(data)
+                        break
+                    else:
+                        cur=cur.right
+
+                else:
+                    break
+
+
+    def print_tree(self,root):
+        if(root==None):
+            return
+        print(root.data,end=" ")
+        self.print_tree(root.left)
+        self.print_tree(root.right)
+l=[int(x) for x in input().split()]
+t=Tree()
+for i in l:
+    t.insert(i)
+root=t.root
+t.print_tree(root)
+
+
+
+
+
+
+
+
