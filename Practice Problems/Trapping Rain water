@@ -1,0 +1,14 @@
+blocks=[int(x) for x in input().split()]
+n=len(blocks)
+left=[0]*n
+right=[0]*n
+water=0
+left[0]=blocks[0]
+for i in range(1,n):
+    left[i]=max(left[i-1],blocks[i])
+right[n-1]=blocks[n-1]
+for i in range(n-2,-1,-1):#loop goes from n-2 to -1 with step size -1
+    right[i]=max(right[i+1],blocks[i])
+for i in range(0,n):
+    water=water+min(left[i],right[i])-blocks[i]
+print(water)
