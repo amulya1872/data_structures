@@ -1,0 +1,16 @@
+s=input()
+k=[]
+for i in range(len(s)):
+    if(s[i]=='('):
+        k.append(s[i])
+    elif(s[i].isalpha()):
+        k.append(s[i])
+    else:
+        m=[]
+        while(k[-1]!='('):
+            m.append(k.pop())
+        k.pop()
+        m=m[::-1]
+        while(len(m)!=0):
+            k.append(m.pop())
+print(*k,end="",sep="")

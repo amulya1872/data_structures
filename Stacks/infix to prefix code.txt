@@ -1,0 +1,50 @@
+def rev(l):
+    for i in range(len(l)):
+       if l[i]==')':
+          l[i]='('
+       elif l[i]=='(':
+          l[i]=')'
+       else:
+          pass
+def precedence(c):
+    if(c=='^'):
+        return 3
+    elif(c=='*' or c=='/'):
+        return 2
+    elif(c=='+' or c=='-'):
+        return 1
+    else:
+        return 0
+expr=input()
+exp=list(expr[::-1])
+rev(exp)
+output=[]
+stack=[]
+for i in range(len(exp)):
+    if(exp[i].isalpha() or exp[i].isdigit()):
+        output.append(exp[i])
+    elif(exp[i]=='('):
+        stack.append(exp[i])
+    elif(exp[i]==')'):
+        while(stack[-1]!='('):
+            output.append(stack.pop())
+        stack.pop()
+    else:
+        if(len(stack)==0 or stack[-1]=='('):
+            stack.append(exp[i])
+        elif(precedence(exp[i])>precedence(stack[-1])):
+            stack.append(exp[i])
+        else:
+            while(len(stack)!=0 and precedence(exp[i])<=precedence(stack[-1])):
+              output.append(stack.pop())
+            stack.append(exp[i])
+while(len(stack)!=0):
+    output.append(stack.pop())
+out=output[::-1]
+print(*out)
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+exp=[str(x) for x in input().split()]
+stack=[]
+for i in range(len(exp)):
+    if(exp[i].isalpha() or exp[i].isdigit()):
+        stack.append(exp[i])
+    elif(exp[i] in '^*/+-'):
+        op1=stack.pop()
+        op2=stack.pop()
+        k=exp[i]
+        stack.append(str(eval(op2 + k + op1)))
+print(int(float(stack[-1])))
+'''input= 2 3 1 * + 9 -
+   then you will get output
+if we take input as string
+   then input=231*+9-'''

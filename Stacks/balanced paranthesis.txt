@@ -1,0 +1,37 @@
+#check balanced paranthesis
+def balanced(exp):
+    s=[]
+    for i in range(len(exp)):
+        if(exp[i]=='(' or exp[i]=='{' or exp[i]=='['):
+            s.append(exp[i])
+            continue
+        if(len(s)==0):
+            return False
+        if(exp[i]==')'):
+            x=s.pop()
+            if(x=='('):
+                return True
+            else:
+                return False
+        elif(exp[i]==']'):
+            x=s.pop()
+            if(x=='['):
+                return True
+            else:
+                return False
+        elif(exp[i]=='}'):
+            x=s.pop()
+            if(x=='{'):
+                return True
+            else:
+                return False
+    if(len(s)==0):
+        return True
+    else:
+        return False
+
+exp=input()
+if(balanced(exp)):
+    print("balanced")
+else:
+    print("not balanced")

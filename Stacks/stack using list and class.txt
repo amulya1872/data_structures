@@ -1,0 +1,34 @@
+#Stack implementation using lists and classmethod
+#operations:Push-->append
+#          :pop-->pop
+#          :is empty-->self.items==[]
+#          :get stack--->print(self.items)
+#          :top--->if stack is not empty then return self.items[-1]
+class Stack:
+    def __init__(self):#constructor
+        self.a=[]#defining Stack
+    def push(self,v):#v is value we want to push onto Stack
+        self.a.append(v)
+    def pop(self):
+        self.a.pop()
+    def get_stack(self):
+        print(self.a)
+    def is_empty(self):
+        return self.a==[]
+    def top(self):
+        if not self.is_empty():
+          return self.a[-1]
+s=Stack()
+s.push("A")
+s.push("B")
+s.push("C")
+s.push("D")
+s.get_stack()
+print(s.is_empty())
+print(s.top())
+s.pop()
+s.get_stack()
+
+
+
+
