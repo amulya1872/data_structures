@@ -1,0 +1,26 @@
+'''Minimum Number of Platforms Required for a Railway/Bus
+ Station
+Input: arr[] = {9:00, 9:40, 9:50, 11:00, 15:00, 18:00}
+dep[] = {9:10, 12:00, 11:20, 11:30, 19:00, 20:00}
+Output: 3
+Explantion: There are at-most three trains at a time 
+(time between 11:00 to 11:20)'''
+arr=[int(x) for x in input().split()]
+dep=[int(x) for x in input().split()]
+n=len(arr)
+arr.sort()
+dep.sort()
+i=1
+j=0
+plat=1
+res=1
+while(i<n and j<n):
+    if(arr[i]<=dep[j]):
+        plat+=1
+        i+=1
+    elif(arr[i]>dep[j]):
+        plat-=1
+        j+=1
+    if(res<plat):
+        res=plat
+print(res)
