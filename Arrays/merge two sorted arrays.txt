@@ -1,0 +1,10 @@
+l1=[int(x) for x in input().split()]
+l2=[int(x) for x in input().split()]
+n1=len(l1)
+n2=len(l2)
+d=dict()
+for i in l1:
+    d[i]=True
+for i in l2:
+    d[i]=True
+print(*sorted(d.keys()))

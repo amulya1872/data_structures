@@ -1,0 +1,20 @@
+n=int(input())
+s=int(input())
+l=[int(x) for x in input().split()]
+pos1=0
+pos2=0
+for i in range(n):
+    sum=0
+    sum=sum+l[i]
+    for j in range(i+1,n):
+        sum=sum+l[j]
+        if(sum==s):
+            pos2=j
+            break
+    if(sum==s):
+        break
+if(pos1==0 and pos2==0):
+    print("Not found")
+else:
+    print(i,j)
+'''Another method'''

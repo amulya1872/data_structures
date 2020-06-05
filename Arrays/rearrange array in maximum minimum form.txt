@@ -1,0 +1,5 @@
+l=[int(x) for x in input().split()]
+n=len(l)
+for i in range(0,n,2):
+    l.insert(i,l.pop())
+print(l)

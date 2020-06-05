@@ -1,0 +1,13 @@
+l=[int(x) for x in input().split()]
+n=len(l)-1
+m=0
+count=1
+print(l[n],end=" ")
+n-=1
+while(n!=0):
+    if(l[n]>max(l[n+1:])):
+        print(l[n],end=" ")
+        count+=1
+        n-=1
+    else:
+        n-=1

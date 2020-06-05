@@ -1,0 +1,10 @@
+l=[int(x) for x in input().split()]
+latest_max=0
+max_now=0
+for i in range(len(l)):
+    max_now+=l[i]
+    if(max_now<0):
+        max_now=0
+    if(latest_max<max_now):
+        latest_max=max_now
+print(latest_max)

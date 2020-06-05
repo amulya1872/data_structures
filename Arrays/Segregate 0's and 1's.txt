@@ -1,0 +1,16 @@
+l=[int(x) for x in input().split()]
+low=0
+mid=0
+high=len(l)-1
+while(mid<=high):
+    if(l[mid]==0):
+        l[mid],l[low]=l[low],l[mid]
+        low+=1
+        mid+=1
+    elif(l[mid]==1):
+        mid+=1
+    else:
+        l[high],l[mid]=l[mid],l[high]
+        high=high-1
+print(l)
+

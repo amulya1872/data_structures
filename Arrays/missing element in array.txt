@@ -1,0 +1,11 @@
+l=[int(x) for x in input().split()]
+n=len(l)
+for i in range(n):
+    if((i+1)!=l[i]):
+        print(i+1)
+'''Another way'''
+n=10
+l=[int(x) for x in input().split()]
+s=sum(l)
+ap_sum=(n)*(n+1)//2
+print(ap_sum-s)

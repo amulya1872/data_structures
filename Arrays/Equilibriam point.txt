@@ -1,0 +1,14 @@
+l=[int(x) for x in input().split()]
+low=0
+high=len(l)-1
+sum1=0
+sum2=0
+while(low<high):
+    sum1=sum1+l[low]
+    low+=1
+    sum2=sum2+l[high]
+    high-=1
+if(sum1==sum2):
+    print(low)
+else:
+    print("-1")
